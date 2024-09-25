@@ -1,7 +1,9 @@
-import { TextField } from "@mui/material";
-import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
-import { useForm, SubmitHandler, useFormState, FieldError } from "react-hook-form";
+import { FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, OutlinedInput, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import { useForm, SubmitHandler } from "react-hook-form";
 import { AuthDTO } from "src/app/core/dto/auth.dto";
 import { useActionsWithEffects } from "src/app/core/hooks/use-actions-with-effects";
 import { useTypedSelector } from "src/app/core/hooks/use-typed-selectors";
@@ -12,6 +14,8 @@ import { dialogInitialStateVO } from './dialog-initial-state.vo';
 import { LoginFormDTO } from "src/app/core/dto/login-form.dto";
 const LoginPage: React.FC = () => {
 
+    const { login } = useActionsWithEffects();
+    const { isLoggedIn, error } = useTypedSelector((state) => state.auth as AuthDTO);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid }, setFocus } = useForm<LoginFormDTO>({
         mode: "all",
@@ -21,10 +25,18 @@ const LoginPage: React.FC = () => {
         }
     });
 
-
-    const { login } = useActionsWithEffects();
-    const { isLoggedIn, error } = useTypedSelector((state) => state.auth as AuthDTO);
     const [status, setStatus] = useState(dialogInitialStateVO);
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
+
+    const handleMouseUpPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
 
     const onDialogClose = () => {
         setStatus(dialogInitialStateVO);
@@ -55,44 +67,59 @@ const LoginPage: React.FC = () => {
             <div className="login-form">
                 <header>Login</header>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <TextField
-                        {...register("email", {
-                            required: "Required",
-                            pattern: {
-                                value: new RegExp('^([a-z0-9_\\-\\.]+)@([a-z0-9_\\-\\.]+)\\.([a-z]{2,5})$'),
-                                message: "Invalid Email"
+                    <FormControl variant="outlined">
+                    <label>Email</label>
+                        <OutlinedInput
+                            {...register("email", {
+                                required: "Required",
+                                pattern: {
+                                    value: new RegExp('^([a-z0-9_\\-\\.]+)@([a-z0-9_\\-\\.]+)\\.([a-z]{2,5})$'),
+                                    message: "Invalid Email"
+                                }
+                            })}
+                            type="email"
+                            placeholder="Enter your email (Hint: chetan@gmail.com)"
+                            id="email"
+                            autoComplete="email"
+                            error={
+                                errors.email && errors.email.message !== "" ? true : false
                             }
-                        })}
-                        type="email"
-                        label="Enter Email"
-                        id="email"
-                        autoComplete="email"
-                        error={
-                            errors.email && errors.email.message !== "" ? true : false
-                        }
-                        helperText={
-                            errors.email && errors.email ? errors.email.message : ""
-                        }
-                    />
-                    <TextField
-                        {...register("password", {
-                            required: "Required",
-                            minLength: {
-                                value: 8,
-                                message: "Minimum 8 characters"
+                        />
+                        <FormHelperText style={{marginLeft: '0', color: errors.email && errors.email ? 'red': ''}}>{errors.email && errors.email ? errors.email.message : " "}</FormHelperText>
+                    </FormControl>
+                    <FormControl variant="outlined">
+                        <label>Password</label>
+                        <OutlinedInput
+                            {...register("password", {
+                                required: "Required",
+                                minLength: {
+                                    value: 8,
+                                    message: "Minimum 8 characters"
+                                }
+                            })}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password (Hint: chetan@pass)"
+                            id="password"
+                            autoComplete="current-password"
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        onMouseUp={handleMouseUpPassword}
+                                    >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
                             }
-                        })}
-                        type="password"
-                        label="Enter Password"
-                        id="password"
-                        autoComplete="current-password"
-                        error={
-                            errors.password && errors.password.message !== "" ? true : false
-                        }
-                        helperText={
-                            errors.password && errors.password ? errors.password.message : ""
-                        }
-                    />
+                            error={
+                                errors.password && errors.password.message !== "" ? true : false
+                            }
+
+                        />
+                        <FormHelperText id="standard-weight-helper-text" style={{marginLeft: '0', color: errors.password && errors.password ? 'red': ''}}>{errors.password && errors.password ? errors.password.message : " "}</FormHelperText>
+                    </FormControl>
                     <Button disabled={!isValid} variant="contained" className="button" type="submit">Login</Button>
                 </form>
                 <DialogComponent {...status} onDismiss={onDialogClose} />
