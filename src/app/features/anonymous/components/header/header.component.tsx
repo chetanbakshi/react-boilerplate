@@ -1,9 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 
-export const HeaderComponent: React.FC = () => {
-    const clickHandler = () => {
-        window.location.href = '#/auth/login';
-    }
+export const HeaderComponent: React.FC = () => {    
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

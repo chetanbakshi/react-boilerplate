@@ -5,30 +5,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Paper, { PaperProps } from '@mui/material/Paper';
-import Draggable from 'react-draggable';
 import { DialogDTO } from 'src/app/core/dto/dialog.dto';
 import { DialogTypes } from 'src/app/core/types/dialog.types';
 
-const PaperComponent = (props: PaperProps) => {
-    return (
-        <Draggable
-            handle="#draggable-dialog-title"
-            cancel={'[class*="MuiDialogContent-root"]'}
-        >
-            <Paper {...props} />
-        </Draggable>
-    );
-}
 
 
 export const DialogComponent = (props: DialogDTO) => {
     const { onDismiss, onConfirm } = props;
-    const [open, setOpen] = React.useState<boolean>(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+    const [open, setOpen] = React.useState<boolean>(false);    
 
     const confirmationHandler = () => {
         setOpen(false);
