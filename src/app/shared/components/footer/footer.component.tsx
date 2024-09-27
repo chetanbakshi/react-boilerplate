@@ -2,7 +2,8 @@ import './footer.style.scss';
 export const FooterComponent: React.FC = () => {
     return (
         <footer>
-            <p>Footer</p>
+            <div>Version 1.0</div>
+            <div>Developed by Chetan Bakshi</div>
         </footer>
     )
 }

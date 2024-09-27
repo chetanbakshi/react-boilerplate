@@ -10,7 +10,7 @@ import { useTypedSelector } from "src/app/core/hooks/use-typed-selectors";
 import { DialogComponent } from "src/app/shared/components";
 import './login.style.scss';
 import { useNavigate } from "react-router";
-import { dialogInitialStateVO } from './dialog-initial-state.vo';
+import { dialogInfoInitialStateVO } from 'src/app/core/initial-state';
 import { LoginFormDTO } from "src/app/core/dto/login-form.dto";
 const LoginPage: React.FC = () => {
 
@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
         }
     });
 
-    const [status, setStatus] = useState(dialogInitialStateVO);
+    const [dialogStatus, setDialogStatus] = useState(dialogInfoInitialStateVO);
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -39,12 +39,12 @@ const LoginPage: React.FC = () => {
     };
 
     const onDialogClose = () => {
-        setStatus(dialogInitialStateVO);
+        setDialogStatus(dialogInfoInitialStateVO);
     }
 
     const onSubmit: SubmitHandler<LoginFormDTO> = (form: LoginFormDTO) => {
         login({ ...form });
-        setStatus({ ...status, isInProgress: true, open: true, title: "", desciption: "Login. Please wait ..." });
+        setDialogStatus({ ...dialogStatus, isInProgress: true, open: true, title: "", desciption: "Login. Please wait ..." });
     }
 
     useEffect(() => {
@@ -53,7 +53,7 @@ const LoginPage: React.FC = () => {
 
     useEffect(() => {
         if (error !== "") {
-            setStatus({ ...status, isInProgress: false, title: "Error", desciption: error as string });
+            setDialogStatus({ ...dialogStatus, isInProgress: false, title: "Error", desciption: error as string });
         }
         if (isLoggedIn) {
             navigate('/protected');
@@ -122,7 +122,7 @@ const LoginPage: React.FC = () => {
                     </FormControl>
                     <Button disabled={!isValid} variant="contained" className="button" type="submit">Login</Button>
                 </form>
-                <DialogComponent {...status} onDismiss={onDialogClose} />
+                <DialogComponent {...dialogStatus} onDismiss={onDialogClose} />
             </div>
         </div>
     );

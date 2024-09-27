@@ -1,15 +1,13 @@
 footer {
-    background-color: #498acc;
-    padding: 6px 0;
+    background-color: #656565;
     text-align: center;
-    font-size: 14px;
+    font-size: 1rem;
     color: #f4f4f4;
     border-top: 1px solid #e9ecef;
-    margin-top: 20px;
-    position: relative;
-    
     width: 100%;
-    left: 0;
-    right: 0;
-    
+    display: flex;
+    justify-content: space-between;
+    div {
+        padding: 6px 20px;
+    }
 }

@@ -1,8 +1,9 @@
 import { Dispatch } from "redux";
 import { AuthActions, authActionTypes } from '../actions'
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { UserInfoDTO } from "../../dto/user-info.dto";
 import { LoginFormDTO } from "../../dto/login-form.dto";
+import { ApiPath } from "../../constant/api-path";
 
 export const logout = () => {
     return (dispatch: Dispatch<AuthActions>) => {
@@ -15,23 +16,26 @@ export const logout = () => {
 export const login = (form: LoginFormDTO) => {
     const { email, password } = form;
     return async (dispatch: Dispatch<AuthActions>) => {
-
         try {
             dispatch({
                 type: authActionTypes.RESET
             });
-            const { data } = await axios.get('/assets/data/user-info.json');
+            const response: AxiosResponse = await axios.get(ApiPath.USER_INFO);
+            const  data  = response.data.filter((user: UserInfoDTO) => email === user.email && password === user.password)[0] as UserInfoDTO
+            
+
             setTimeout(() => {
-                if (!(email === data.email && password === data.password)) {
+                if (!(data)) {
                     dispatch({
                         type: authActionTypes.LOGIN_FAILURE,
                         payload: "Invalid email or password"
                     });
                     return;
                 }
+                delete data.password;
                 dispatch({
                     type: authActionTypes.LOGIN_SUCCESS,
-                    payload: { ...data, password: "" } as UserInfoDTO
+                    payload: data as UserInfoDTO
                 });
             }, 2000)
         } catch (error: any) {

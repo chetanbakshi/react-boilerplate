@@ -1,13 +1,12 @@
 import { authInitialStateVO as initialState } from './auth-initial-state.vo';
 import { AuthActions as Action, authActionTypes } from '../../actions';
 import { AuthDTO as State } from 'src/app/core/dto/auth.dto';
-import {StorageKey} from 'src/app/core/constant';
+import { StorageKey } from 'src/app/core/constant';
 
 const ss = sessionStorage.getItem(StorageKey.USER_INFO);
 
 let initState = ss ? JSON.parse(ss) : initialState;
-
-initState = {...initState, error: ""};
+initState = { ...initState, error: "" };
 
 export const AuthReducer = (state: State = initState, action: Action) => {
     let newState: State;
