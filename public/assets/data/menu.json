@@ -1,0 +1,41 @@
+[
+    {
+        "menuName": "anonymous",
+        "menuItems": [
+            {
+                "label": "Home",
+                "link": "#/anonymous/home"
+            },
+            {
+                "label": "About Us",
+                "link": "#/anonymous/about-us"
+            },
+            {
+                "label": "Contact Us",
+                "link": "#/anonymous/contact-us"
+            },
+            {
+                "label": "Login",
+                "link": "#/anonymous/login"
+            }
+        ]
+    },
+    {
+        "menuName": "protected",
+        "menuItems": [
+            {
+                "label": "Dashboard",
+                "link": "#/protected/dashboard"
+            },
+            {
+                "label": "Settings",
+                "link": "#/protected/settings"
+            },
+            {
+                "label": "Logout",
+                "link": "",
+                "action": "logout"
+            }
+        ]
+    }
+]

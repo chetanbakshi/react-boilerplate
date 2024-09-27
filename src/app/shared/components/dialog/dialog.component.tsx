@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DialogDTO } from 'src/app/core/dto/dialog.dto';
-import { DialogTypes } from 'src/app/core/types/dialog.types';
+import { DialogType } from 'src/app/core/constant/dialog.type';
 
 
 
@@ -58,9 +58,9 @@ export const DialogComponent = (props: DialogDTO) => {
             </DialogContent>
             {!props.isInProgress ? <DialogActions>
                 <Button autoFocus onClick={handleClose}>
-                    {props.type === DialogTypes.INFO ? 'Close' : 'Cancel'}
+                    {props.type === DialogType.INFO ? 'Close' : 'Cancel'}
                 </Button>
-                {props.type === DialogTypes.CONFIRM ? <Button onClick={confirmationHandler}>Yes</Button> : ""}
+                {props.type === DialogType.CONFIRM ? <Button onClick={confirmationHandler}>Yes</Button> : ""}
             </DialogActions> : ""}
         </Dialog>
 

@@ -1,4 +1,21 @@
 @import './styles/variables.scss';
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+.app {
+    animation: fadeIn 0.5s;
+
+}
+.initializing {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 24px;  
+}
 .container {
     min-height: $container-min-height;
 }

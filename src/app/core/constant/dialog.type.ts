@@ -1,4 +1,4 @@
-export enum DialogTypes {
+export enum DialogType {
     // ALERT = "ALERT",
     INFO = "INFO",
     CONFIRM = "CONFIRM"

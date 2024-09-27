@@ -1,0 +1,16 @@
+[
+    {
+        "firstName": "Chetan",
+        "lastName": "Bakshi",
+        "password": "chetan@pass",
+        "email": "chetan@gmail.com",
+        "phone": "123-456-7890"
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "john@pass",
+        "email": "john@gmail.com",
+        "phone": "967-289-3465"
+    }
+]

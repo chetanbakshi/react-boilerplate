@@ -1,7 +1,7 @@
-import { DialogTypes } from "../types/dialog.types";
+import { DialogType } from "../constant/dialog.type";
 
 export interface DialogDTO {
-    type: DialogTypes;
+    type: DialogType;
     isInProgress: boolean;
     error: string;
     desciption: string;
