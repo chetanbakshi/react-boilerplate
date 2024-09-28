@@ -2,16 +2,16 @@
 
 ## Table of Contents
 
-- Objective
-- Getting Started
-- Features List
-- Naming Conventions
-- Folders' Details
-  - core
+- [Objective](#objective)
+- [Getting Started](#getting-started)
+- [Features List](#features-list)
+- [Naming Conventions](#naming-conventions)
+- [Folders Details](#folders-details)
+  - [core](#core)
   - [features](#features)
-  - router
-  - shared
-  - styles
+  - [router](#router)
+  - [shared](#shared)
+  - [styles](#styles)
 - How to Add New Link in Router?
 - Working with Redux/Store
 - Importance of module type file
@@ -75,7 +75,7 @@ This framework has followed certain naming conventions. Below are the explainati
 
 `index.ts`: All the folder will have index file which will export all the modules
 
-## Folder Details
+## Folders Details
 
 ### core
 
