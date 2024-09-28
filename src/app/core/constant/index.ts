@@ -1,3 +1,2 @@
-export * from './storage-key';
-export * from './api-path';
-export * from './menu-types';
+export * from './storage-key.const';
+export * from './api-path.const';

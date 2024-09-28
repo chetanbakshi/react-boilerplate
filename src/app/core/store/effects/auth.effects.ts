@@ -3,7 +3,7 @@ import { AuthActions, authActionTypes } from '../actions'
 import axios, { AxiosResponse } from "axios";
 import { UserInfoDTO } from "../../dto/user-info.dto";
 import { LoginFormDTO } from "../../dto/login-form.dto";
-import { ApiPath } from "../../constant/api-path";
+import { ApiPathConst } from "../../constant/api-path.const";
 
 export const logout = () => {
     return (dispatch: Dispatch<AuthActions>) => {
@@ -20,10 +20,8 @@ export const login = (form: LoginFormDTO) => {
             dispatch({
                 type: authActionTypes.RESET
             });
-            const response: AxiosResponse = await axios.get(ApiPath.USER_INFO);
-            const  data  = response.data.filter((user: UserInfoDTO) => email === user.email && password === user.password)[0] as UserInfoDTO
-            
-
+            const response: AxiosResponse = await axios.get(ApiPathConst.USER_INFO);
+            const data: UserInfoDTO = response.data.filter((user: UserInfoDTO) => email === user.email && password === user.password)[0] as UserInfoDTO
             setTimeout(() => {
                 if (!(data)) {
                     dispatch({
@@ -35,7 +33,7 @@ export const login = (form: LoginFormDTO) => {
                 delete data.password;
                 dispatch({
                     type: authActionTypes.LOGIN_SUCCESS,
-                    payload: data as UserInfoDTO
+                    payload: data
                 });
             }, 2000)
         } catch (error: any) {

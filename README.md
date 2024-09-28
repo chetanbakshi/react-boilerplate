@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+# Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- Getting Started
+- Features
+- Naming Conventions
+- Folders' Details
+  - core
+  - features
+  - router
+  - shared
+  - styles
+- How to Add New Link in Router?
+- Working with Redux/Store
+- Importance of module type file
 
-In the project directory, you can run:
 
-### `npm start`
+## Objective
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The main objective of creating this boilerplate to add dynamic functionalities\
+Try to make the things very simple so that junior developers can also contribute in the project efficiantly\
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Either download zip file or clone this project.
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This boilerplate includes the best libraries and best practices and standard which will help to start the development from the day one without worrying anything about the project initial setup and configuration. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Important libraries
+    - Typescript
+    - [SASS](https://sass-lang.com/documentation/syntax/) (Pre-processor CSS)
+    - [MUI Components](https://mui.com/material-ui/all-components/)
+    - Redux Toolkit with thunk
+    - [Axios](https://axios-http.com/docs/intro)
+    - [React Hook Form](https://react-hook-form.com/): Form Validation, Error handling, Form State
+- Based on Solid principle
+- Well defined folder structure
+- Array based routing system with nested children
+- Auth logic can be added directly at the routing object
+- JSON based menu list in the navigation
+- Multiple menu state can be added in the menu list. Action can also be performed instead of giving a link. For instance, showing dialog box for confirmation (e.g., logout) on clicking on menu item
+- Well defined structure of store (redux) for creating actions, effects and reducer
+- Added hooks to interact with redux state
+- Created structure for keeping the global constant variables, models/dto (Data type object), initial state vo (value object)
+- Reusable components for Header|Footer|Dialog
+- Easy to scale the application, easy to maintain, multiple teams can work together on the same code base with less file conflicts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Naming Conventions
 
-### `npm run eject`
+This framework has followed certain naming conventions. Below are the explaination of each file type
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`*.module.tsx`: If the file name ends with `.module.tsx` that means this is a feature module and the main usage of this is to add common features here which will use accross all the pages which comes under this module. The other important role of this file is set the routing guard if this is required. In this boilerplate, this guard implementation is available in protected module file
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`*.page.tsx`: As the name suggest, these type of files are act a page which will hold the view elements and components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`*.const.ts`: The purpose of this file is to create constants
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`*.dto.ts`: This is a interface file which will use as a data type object or as a model. If this is a common file then we will keep this in the `core > dto` directory otherwise keep this in the dto folder under that particular feature module
 
-## Learn More
+`*.vo.ts`: This file serves as a value object. The main purpose of creating this file is either set the initial state of object or save some app data in the form of object
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`*.type.ts`: This is helpful when we are defining some types of object or component. For example Dialog Types (INFO, ALERT, CONFIRM)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`*.actions.ts`: Redux actions will define in this file
+
+`*effects.ts`: Define Redux effect methods here
+
+`*.reducer.ts`: Reducer will create in this file
+
+`*.component.ts`: This file type is for creating reusable component or refactor the code
+
+`*style.scss`: This file type is for stylesheet
+
+`index.ts`: All the folder will have index file which will export all the modules
+
+## Folder Details
+
+### core
+
+All the constants, hooks, redux store, dto, types, utilities related files will come under this module
+
+### features
+
+All the feature modules package will come under this structure
+
+### router
+
+All the routing path will define in the value object file
+
+### shared
+
+All the reusable component files need to be placed here
+
+### styles
+
+Keep all the additional stylesheet file here
