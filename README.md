@@ -19,7 +19,7 @@
 
 ## Objective
 
-The main objective of creating this boilerplate to reduce the initial development time of creating project struture with standard
+The main objective of creating this boilerplate is to reduce the initial development time of creating application framework with standard
 
 
 ## Getting Started
