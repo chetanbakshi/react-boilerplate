@@ -2,7 +2,7 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { DialogDTO } from "src/app/core/dto/dialog.dto";
 import { useActionsWithEffects } from "src/app/core/hooks/use-actions-with-effects";
-import { DialogType } from "src/app/core/types/dialog.type";
+import { DialogType } from "src/app/core/types";
 import { DialogComponent } from "src/app/shared/components";
 import { dialogConfirmInitialStateVO } from "src/app/core/initial-state";
 import { HeaderDTO } from "./header.dto";
@@ -25,7 +25,7 @@ export const HeaderComponent: React.FC<HeaderDTO> = (props) => {
     const logoutConfirmationHandler = () => {
         setDialogStatus(dialogConfirmInitialStateVO);
         setTimeout(() => {
-        logout();
+            logout();
         }, 50);
     }
     const logoutCancelHandler = () => {
@@ -39,15 +39,15 @@ export const HeaderComponent: React.FC<HeaderDTO> = (props) => {
                         React Boilerplate
                     </Typography>
                     {
-                        menuItems && menuItems.map((item: MenuItemDTO, index) => {
+                        menuItems ? menuItems.map((item: MenuItemDTO, index) => {
                             return item.action
                                 ?
-                                <Button key={index} onClick={() => buttonClickHandler(item.action)} color="inherit">{item.label}</Button>
+                                <Button key={'menu-button'+index} onClick={() => buttonClickHandler(item.action)} color="inherit">{item.label}</Button>
                                 :
-                                <Button key={index} href={item.link} color="inherit">{item.label}</Button>
-                        })
+                                <Button key={'menu-button'+index} href={item.link} color="inherit">{item.label}</Button>
+                        }): ''
                     }
-                    
+
                 </Toolbar>
             </AppBar>
             <DialogComponent {...dialogStatus} onDismiss={logoutCancelHandler} onConfirm={logoutConfirmationHandler} />
