@@ -1,5 +1,5 @@
 import { DialogDTO } from "src/app/core/dto/dialog.dto";
-import { DialogType } from "src/app/core/constant/dialog.type";
+import { DialogType } from "src/app/core/types/dialog.type";
 
 export const dialogConfirmInitialStateVO: DialogDTO = {
     type: DialogType.CONFIRM,

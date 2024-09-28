@@ -2,7 +2,7 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { DialogDTO } from "src/app/core/dto/dialog.dto";
 import { useActionsWithEffects } from "src/app/core/hooks/use-actions-with-effects";
-import { DialogType } from "src/app/core/constant/dialog.type";
+import { DialogType } from "src/app/core/types/dialog.type";
 import { DialogComponent } from "src/app/shared/components";
 import { dialogConfirmInitialStateVO } from "src/app/core/initial-state";
 import { HeaderDTO } from "./header.dto";

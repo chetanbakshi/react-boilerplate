@@ -1,4 +1,4 @@
-import { DialogType } from "../constant/dialog.type";
+import { DialogType } from "../types/dialog.type";
 
 export interface DialogDTO {
     type: DialogType;

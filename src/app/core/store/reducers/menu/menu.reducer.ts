@@ -1,8 +1,8 @@
 
-import { StorageKey } from "src/app/core/constant";
+import { StorageKeyConst } from "src/app/core/constant";
 import { MenuActions as Action, menuActionTypes } from "../../actions/menu.actions";
 import { MenuDTO as State } from "src/app/core/dto/menu.dto";
-const ss = sessionStorage.getItem(StorageKey.NAVIGATION);
+const ss = sessionStorage.getItem(StorageKeyConst.NAVIGATION);
 
 let initState = ss ? JSON.parse(ss) : [];
 initState = { ...initState, menuLoadError: "" };
@@ -22,6 +22,6 @@ export const MenuReducer = (state: State = initState, action: Action) => {
         default:
             newState = state;
     }
-    sessionStorage.setItem(StorageKey.NAVIGATION, JSON.stringify(newState));
+    sessionStorage.setItem(StorageKeyConst.NAVIGATION, JSON.stringify(newState));
     return newState;
 }

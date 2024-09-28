@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DialogDTO } from 'src/app/core/dto/dialog.dto';
-import { DialogType } from 'src/app/core/constant/dialog.type';
+import { DialogType } from 'src/app/core/types/dialog.type';
 
 
 

@@ -2,12 +2,12 @@ import { Dispatch } from "redux";
 import { MenuActions, menuActionTypes } from '../actions/menu.actions'
 import axios from "axios";
 import { MenuListDTO } from "../../dto/menu.dto";
-import { ApiPath } from "../../constant/api-path";
+import { ApiPathConst } from "../../constant/api-path.const";
 
 export const loadMenu = () => {
     return async (dispatch: Dispatch<MenuActions>) => {
         try {
-            const { data } = await axios.get(ApiPath.MENU);
+            const { data } = await axios.get(ApiPathConst.MENU);
             setTimeout(() => {
                 dispatch({
                     type: menuActionTypes.SUCCESS,
