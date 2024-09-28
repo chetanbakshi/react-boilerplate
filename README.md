@@ -2,12 +2,13 @@
 
 ## Table of Contents
 
+- Objective
 - Getting Started
-- Features
+- Features List
 - Naming Conventions
 - Folders' Details
   - core
-  - features
+  - [features](#features)
   - router
   - shared
   - styles
@@ -18,17 +19,14 @@
 
 ## Objective
 
-The main objective of creating this boilerplate to add dynamic functionalities\
-Try to make the things very simple so that junior developers can also contribute in the project efficiantly\
+The main objective of creating this boilerplate to reduce the initial development time of creating project struture with standard
 
 
 ## Getting Started
 
 Either download zip file or clone this project.
 
-## Features
-
-This boilerplate includes the best libraries and best practices and standard which will help to start the development from the day one without worrying anything about the project initial setup and configuration. 
+## Features List
 
 - Important libraries
     - Typescript
