@@ -3,11 +3,11 @@ import { RouterComponent } from './router';
 import './app.scss';
 import { FooterComponent, HeaderComponent } from './shared/components';
 import { Interceptor } from './core/axios-config';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useActionsWithEffects } from './core/hooks/use-actions-with-effects';
 import { useTypedSelector } from './core/hooks/use-typed-selectors';
 import { MenuDTO, MenuItemDTO } from './core/dto/menu.dto';
-import { Box, CircularProgress } from '@mui/material';
+import {  CircularProgress } from '@mui/material';
 
 function App() {
   const { loadMenu } = useActionsWithEffects();
@@ -47,7 +47,6 @@ function App() {
             <FooterComponent />
           </div>
           :
-
           <div className='initializing'><CircularProgress />{loadingStatusText}</div>
       }
     </HashRouter>

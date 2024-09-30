@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FormControl, FormHelperText, IconButton, Input, InputAdornment, InputLabel, OutlinedInput, TextField } from "@mui/material";
+import { FormControl, FormHelperText, IconButton, InputAdornment, OutlinedInput } from "@mui/material";
 import Button from "@mui/material/Button";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { useForm, SubmitHandler } from "react-hook-form";
-import { AuthDTO } from "src/app/core/dto/auth.dto";
 import { useActionsWithEffects } from "src/app/core/hooks/use-actions-with-effects";
 import { useTypedSelector } from "src/app/core/hooks/use-typed-selectors";
 import { DialogComponent } from "src/app/shared/components";
@@ -15,7 +14,7 @@ import { LoginFormDTO } from "src/app/core/dto/login-form.dto";
 const LoginPage: React.FC = () => {
 
     const { login } = useActionsWithEffects();
-    const { isLoggedIn, error } = useTypedSelector((state) => state.auth as AuthDTO);
+    const { isLoggedIn, error } = useTypedSelector((state) => state.auth);
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isValid }, setFocus } = useForm<LoginFormDTO>({
         mode: "all",
@@ -58,6 +57,7 @@ const LoginPage: React.FC = () => {
         if (isLoggedIn) {
             navigate('/protected');
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error, isLoggedIn]);
 
 
@@ -68,7 +68,7 @@ const LoginPage: React.FC = () => {
                 <header>Login</header>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <FormControl variant="outlined">
-                    <label>Email</label>
+                        <label>Email</label>
                         <OutlinedInput
                             {...register("email", {
                                 required: "Required",
@@ -82,10 +82,10 @@ const LoginPage: React.FC = () => {
                             id="email"
                             autoComplete="email"
                             error={
-                                errors.email && errors.email.message !== "" ? true : false
+                                !!errors.email
                             }
                         />
-                        <FormHelperText style={{marginLeft: '0', color: errors.email && errors.email ? 'red': ''}}>{errors.email && errors.email ? errors.email.message : " "}</FormHelperText>
+                        <FormHelperText style={{ marginLeft: '0', color: errors.email ? 'red' : '' }}>{errors.email ? errors.email.message : " "}</FormHelperText>
                     </FormControl>
                     <FormControl variant="outlined">
                         <label>Password</label>
@@ -114,11 +114,10 @@ const LoginPage: React.FC = () => {
                                 </InputAdornment>
                             }
                             error={
-                                errors.password && errors.password.message !== "" ? true : false
+                                !!errors.password?.message
                             }
-
                         />
-                        <FormHelperText id="standard-weight-helper-text" style={{marginLeft: '0', color: errors.password && errors.password ? 'red': ''}}>{errors.password && errors.password ? errors.password.message : " "}</FormHelperText>
+                        <FormHelperText id="standard-weight-helper-text" style={{ marginLeft: '0', color: errors.password ? 'red' : '' }}>{errors.password ? errors.password.message : " "}</FormHelperText>
                     </FormControl>
                     <Button disabled={!isValid} variant="contained" className="button" type="submit">Login</Button>
                 </form>
