@@ -31,8 +31,6 @@ Either download zip file or clone this project.
 
 [Launch Application](https://react-boilerplate.chetanbakshi.com/)
 
-[Link](https://react-boilerplate.chetanbakshi.com/)
-
 ## Features List
 
 - Important libraries
