@@ -176,8 +176,10 @@ NOTE: All reducers need to be exported in the index.ts file
 
 ### Read Redux State
 
-Reading redux state is pretty simple. With the help of custom hook `useTypedSelector`, state can be called, e.g., `const { menuList, menuLoadError, currentMenu } = useTypedSelector(state => state.menu as MenuDTO);`
-
+Reading redux state is pretty simple. With the help of custom hook `useTypedSelector`, state can be called, e.g., 
+```javascript
+const { menuList, menuLoadError, currentMenu } = useTypedSelector(state => state.menu as MenuDTO);`
+```
 ### Call Effects Method
 
 For updating state, either call dipatch method directly from the component or page itself or defined method in the effect to load the data and dispatch event from their to update the redux state.
