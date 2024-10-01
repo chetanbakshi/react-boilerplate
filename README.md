@@ -20,7 +20,7 @@
   - [Effects](#effects)
   - [Reducers](#reducers)
   - [Read Redux State](#read-redux-state)
-  - [Call Effects Method]($call-effects-method)
+  - [Call Effects Method](#call-effects-method)
 
 
 ## Objective
