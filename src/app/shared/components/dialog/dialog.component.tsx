@@ -48,7 +48,7 @@ export const DialogComponent = (props: DialogDTO) => {
             onClose={handleClose}
             // PaperComponent={PaperComponent}
         >
-            <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+            <DialogTitle id="draggable-dialog-title">
                 {props.title ? props.title : ""}
             </DialogTitle>
             <DialogContent>
