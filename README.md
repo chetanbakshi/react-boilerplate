@@ -29,7 +29,10 @@ Either download zip file or clone this project.
 
 ## Demo 
 
-[Launch Application](https://react-boilerplate.chetanbakshi.com/)
+- [Launch Application](https://react-boilerplate.chetanbakshi.com/)
+- Application Login credentials (Email | Password)
+  - chetan@gmail.com | chetan@pass
+  - john@gmail.com | john@pass
 
 ## Features List
 
@@ -44,7 +47,7 @@ Either download zip file or clone this project.
 - Well defined folder structure
 - Array based routing system with nested children
 - Auth logic can be added directly at the routing object
-- JSON based menu list in the navigation
+- JSON based responsive menu
 - Multiple menu state can be added in the menu list. Action can also be performed instead of giving a link. For instance, showing dialog box for confirmation (e.g., logout) on clicking on menu item
 - Well defined structure of store (redux) for creating actions, effects and reducer
 - Added hooks to interact with redux state
