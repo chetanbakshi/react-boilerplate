@@ -64,7 +64,11 @@ The `npm start` command will automatically launch the default browser with the U
 
 This framework follows certain naming conventions. Below is an explanation of each file type:
 
-`*.module.tsx:` If a file name ends with .module.tsx, it indicates that this is a feature module. The main purpose of this file is to include common features and components that will be used across all the pages within this module. Another important role of this file is to set the routing guard if required. In this boilerplate, the guard implementation is available in the protected module file.
+`kebab-case.type.extension`: Through out this framework, naming convensions format is kebab-case + file type + file extension. For example: If developer is creating a contact us page then the file name will be `contact-us.page.tsx`. Here in this file name, the `contact-us` is following a kebab-case, `.page` is the file type and `.tsx` is file extension.
+
+#### List of file types and its explanation:
+
+`*.module.tsx:` If a file name ends with `.module.tsx`, it indicates that this is a feature module. The main purpose of this file is to include common features and components that will be used across all the pages within this module. Another important role of this file is to set the routing guard if required. In this boilerplate, the guard implementation is available in the protected module file.
 
 `*.page.tsx:` As the name suggests, this type of files are act as page that hold view elements and components.
 
