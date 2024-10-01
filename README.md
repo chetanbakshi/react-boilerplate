@@ -185,7 +185,7 @@ const { loadMenu } = useActionsWithEffects();
 
 useEffect(() => {
     loadMenu();
-  }, []);
+}, []);
 ```
 
 
