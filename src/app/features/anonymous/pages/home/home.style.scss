@@ -1,0 +1,9 @@
+.annonymous-home-page {
+    a {
+        font-size: 1.2rem;
+        color: blue;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
